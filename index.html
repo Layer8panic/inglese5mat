@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#f3f5fb">
+<title>English Easy · Renewable Energy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Lexend:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f3f5fb;--card:#ffffff;--ink:#17203a;--muted:#5f6779;--line:#e1e5ef;
+  --pri:#4b3fd8;--pri-soft:#ecebff;--fon:#c2410c;--fon-soft:#fff1e8;
+  --ok:#15803d;--ok-soft:#e3f6ea;--mid:#a16207;--mid-soft:#fdf3d6;--bad:#c2410c;--bad-soft:#fde9e0;
+  --shadow:0 1px 2px rgba(23,32,58,.05),0 8px 24px rgba(23,32,58,.07);
+  --r:20px;--fs:17px;--body:'Atkinson Hyperlegible',system-ui,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root{
+  --bg:#10131c;--card:#1a1f2c;--ink:#eef1f8;--muted:#a0a8ba;--line:#2a3142;
+  --pri:#a9a2ff;--pri-soft:#262650;--fon:#ffa66e;--fon-soft:#3a2617;
+  --ok:#6bdc95;--ok-soft:#173826;--mid:#f2c75c;--mid-soft:#3a3016;--bad:#ff9a74;--bad-soft:#3d2219;--shadow:none}}
+body.fs1{--fs:19px}body.fs2{--fs:22px}
+body.lex{--body:'Lexend',system-ui,sans-serif}
+body.nofon .fonline{display:none}body.noit .itline{display:none}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:var(--fs);line-height:1.5}
+h1,h2,h3{font-family:'Fraunces',Georgia,serif;margin:0;letter-spacing:-.01em;font-weight:700}
+button,select,input{font:inherit;color:inherit}
+button{border:0;background:none;cursor:pointer}
+:focus-visible{outline:3px solid var(--pri);outline-offset:3px;border-radius:10px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+
+header{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);padding:calc(env(safe-area-inset-top) + 10px) 14px 10px;display:flex;align-items:center;gap:10px}
+header h1{font-size:1.15em;flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hb{flex:none;min-width:46px;height:46px;border-radius:14px;background:var(--card);box-shadow:var(--shadow);display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:700;padding:0 10px}
+#back{display:none}#back.show{display:flex}
+main{padding:2px 16px calc(110px + env(safe-area-inset-bottom));max-width:660px;margin:0 auto}
+nav{position:fixed;left:0;right:0;bottom:0;z-index:10;background:var(--card);border-top:1px solid var(--line);display:flex;padding:6px 6px calc(6px + env(safe-area-inset-bottom))}
+nav button{flex:1;min-height:58px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;border-radius:16px;font-size:13px;font-weight:700;color:var(--muted)}
+nav .ic{font-size:23px;line-height:1}
+nav button.on{color:var(--pri);background:var(--pri-soft)}
+
+.card{background:var(--card);border-radius:var(--r);box-shadow:var(--shadow);padding:18px;margin:14px 0}
+.label{font-size:.72em;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 10px;display:flex;align-items:center;gap:8px}
+.muted{color:var(--muted)}.small{font-size:.86em}.center{text-align:center}
+.row{display:flex;gap:12px;align-items:flex-start}.grow{flex:1;min-width:0}
+
+.hero{border-radius:26px;padding:22px 20px;margin-top:8px;color:#fff;background:linear-gradient(135deg,#4b3fd8 0%,#7c3aed 55%,#db2777 120%);position:relative;overflow:hidden}
+.hero::after{content:'';position:absolute;right:-40px;top:-40px;width:180px;height:180px;border-radius:50%;background:rgba(255,255,255,.12)}
+.hero h2{font-size:1.65em;line-height:1.1;position:relative}
+.hero p{margin:.5em 0 0;opacity:.92;position:relative}
+.hero .pbar{height:10px;border-radius:10px;background:rgba(255,255,255,.25);margin-top:14px;overflow:hidden;position:relative}
+.hero .pbar i{display:block;height:100%;background:#fff;border-radius:10px;transition:width .5s}
+
+.topic{display:flex;align-items:center;gap:14px;width:100%;text-align:left;padding:4px 0}
+.tile{flex:none;width:58px;height:58px;border-radius:18px;display:flex;align-items:center;justify-content:center;font-size:30px}
+.topic h3{font-size:1.15em;line-height:1.2}
+.bar{height:8px;border-radius:8px;background:var(--line);overflow:hidden;margin-top:8px}
+.bar i{display:block;height:100%;border-radius:8px;background:var(--ok);transition:width .4s}
+
+.qrow{display:flex;gap:12px;align-items:center;width:100%;text-align:left;padding:14px 4px;border-bottom:1px solid var(--line);min-height:60px}
+.qrow:last-child{border-bottom:0}
+.qrow .n{flex:none;width:34px;height:34px;border-radius:50%;background:var(--bg);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.85em}
+.dot{flex:none;width:14px;height:14px;border-radius:50%;background:var(--line)}
+.dot.s3{background:var(--ok)}.dot.s2{background:var(--mid)}.dot.s1{background:var(--bad)}
+
+.qhead{border-radius:var(--r);padding:20px;margin:12px 0;color:#fff}
+.qhead .en{font-family:'Fraunces',Georgia,serif;font-size:1.45em;line-height:1.2}
+.qhead .fonline{margin-top:8px;font-weight:700;opacity:.95}
+.qhead .itline{margin-top:4px;opacity:.85}
+.chipT{display:inline-flex;gap:6px;align-items:center;background:rgba(255,255,255,.2);border-radius:999px;padding:4px 12px;font-size:.78em;font-weight:700;margin-bottom:10px}
+
+.play{flex:none;width:48px;height:48px;border-radius:50%;background:var(--pri);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:18px}
+.play.sm{width:42px;height:42px;font-size:15px}
+.play.soft{background:var(--pri-soft);color:var(--pri)}
+.play.white{background:#fff;color:var(--pri)}
+@media (prefers-color-scheme:dark){.play:not(.soft):not(.white){color:#10131c}}
+.speaking{animation:pulse 1s infinite}@keyframes pulse{50%{transform:scale(1.1)}}
+
+.fonline{color:var(--fon);font-weight:700}
+.fonline::before{content:'🗣️ ';font-weight:400}
+.itline{color:var(--muted);font-size:.9em}
+.itline::before{content:'🇮🇹 '}
+
+.start{background:var(--mid-soft);border-radius:16px;padding:14px}
+.start .en{font-size:1.15em;font-weight:700}
+
+.ctrl{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:6px}
+.cbtn{min-height:54px;border-radius:16px;font-weight:700;display:flex;align-items:center;justify-content:center;gap:8px;background:var(--pri);color:#fff;padding:8px 10px;text-align:center;line-height:1.15}
+.cbtn.alt{background:var(--pri-soft);color:var(--pri)}
+@media (prefers-color-scheme:dark){.cbtn:not(.alt){color:#10131c}}
+
+.sent{display:flex;gap:12px;padding:14px 10px;margin:0 -10px;border-radius:16px;transition:background .25s}
+.sent+.sent{border-top:1px dashed var(--line)}
+.sent .num{flex:none;width:28px;height:28px;border-radius:50%;background:var(--fon-soft);color:var(--fon);font-weight:700;font-size:.8em;display:flex;align-items:center;justify-content:center;margin-top:2px}
+.sent .en{font-size:1.12em;font-weight:700;line-height:1.35}
+.sent .fonline{margin-top:4px}
+.sent .itline{margin-top:3px}
+.sent.now{background:var(--pri-soft)}
+.sent.yourturn{background:var(--ok-soft)}
+.turn{display:none;margin-top:8px;font-weight:700;color:var(--ok)}
+.sent.yourturn .turn{display:block}
+.w{border-radius:6px;padding:0 1px;cursor:pointer}
+.w:active{background:var(--pri-soft)}
+.hideEn .sent .en{filter:blur(8px)}
+.hideEn .sent .fonline{filter:blur(8px)}
+
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.kchip{display:flex;flex-direction:column;align-items:flex-start;gap:1px;padding:10px 14px;border-radius:16px;background:var(--pri-soft);text-align:left;min-height:48px}
+.kchip b{color:var(--pri)}
+.kchip .f{color:var(--fon);font-weight:700;font-size:.82em}
+.kchip .i{color:var(--muted);font-size:.8em}
+.kchip.got{background:var(--ok-soft)}.kchip.got b{color:var(--ok)}
+
+.tog{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 0;min-height:56px}
+.tog+.tog{border-top:1px solid var(--line)}
+.sw{width:54px;height:32px;border-radius:99px;background:var(--line);position:relative;flex:none;transition:.2s}
+.sw::after{content:'';position:absolute;top:3px;left:3px;width:26px;height:26px;border-radius:50%;background:#fff;transition:.2s;box-shadow:0 1px 3px rgba(0,0,0,.25)}
+.sw.on{background:var(--pri)}.sw.on::after{left:25px}
+.quick{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0 2px}
+.qt{padding:9px 14px;border-radius:999px;border:2px solid var(--line);font-weight:700;font-size:.82em;min-height:44px;background:var(--card)}
+.qt.on{border-color:var(--pri);color:var(--pri);background:var(--pri-soft)}
+
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;min-height:56px;padding:12px;border-radius:18px;font-weight:700;background:var(--pri);color:#fff}
+.btn.alt{background:var(--card);color:var(--ink);border:2px solid var(--line)}
+@media (prefers-color-scheme:dark){.btn:not(.alt){color:#10131c}}
+.btn+.btn{margin-top:10px}
+.pager{display:flex;gap:10px;margin-top:8px}.pager .btn{margin:0}
+.rate{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.rate button{min-height:86px;border-radius:18px;font-weight:700;font-size:.8em;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px}
+.rate .e{font-size:30px}
+.r1{background:var(--bad-soft);color:var(--bad)}.r2{background:var(--mid-soft);color:var(--mid)}.r3{background:var(--ok-soft);color:var(--ok)}
+.pick{display:flex;flex-wrap:wrap;gap:8px}
+.pick button{min-height:46px;padding:8px 14px;border-radius:999px;border:2px solid var(--line);background:var(--card);font-weight:700;font-size:.85em}
+.pick button.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.steps{list-style:none;margin:0;padding:0}
+.steps li{display:flex;gap:12px;padding:8px 0}
+.steps li .s{flex:none;width:32px;height:32px;border-radius:10px;background:var(--pri);color:#fff;font-weight:700;display:flex;align-items:center;justify-content:center}
+@media (prefers-color-scheme:dark){.steps li .s{color:#10131c}}
+.search{width:100%;min-height:52px;border-radius:16px;border:2px solid var(--line);background:var(--card);padding:0 16px;font-size:1em}
+.wordrow{display:flex;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line)}
+.wordrow:last-child{border-bottom:0}
+.wordrow b{font-size:1.05em}
+.rule{display:flex;gap:12px;padding:10px 0;border-bottom:1px solid var(--line);align-items:flex-start}
+.rule:last-child{border-bottom:0}
+.rule .k{flex:none;min-width:58px;text-align:center;font-weight:700;color:var(--fon);background:var(--fon-soft);border-radius:10px;padding:4px 6px}
+.bigE{font-size:52px}
+.stat{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;text-align:center}
+.stat div{background:var(--bg);border-radius:14px;padding:10px 4px}
+.stat b{display:block;font-family:'Fraunces',Georgia,serif;font-size:1.6em;line-height:1.1}
+.reveal{animation:pop .3s ease}@keyframes pop{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.toast{position:fixed;left:50%;bottom:calc(96px + env(safe-area-inset-bottom));transform:translateX(-50%) translateY(20px);background:var(--ink);color:var(--bg);padding:12px 18px;border-radius:14px;font-size:15px;opacity:0;transition:.25s;pointer-events:none;max-width:92%;z-index:50;text-align:center}
+.toast.show{opacity:1;transform:translateX(-50%)}
+.sheet{position:fixed;inset:0;z-index:40;background:rgba(10,12,20,.45);display:none;align-items:flex-end;justify-content:center}
+.sheet.show{display:flex}
+.sheet .in{background:var(--card);width:100%;max-width:660px;max-height:88vh;overflow:auto;border-radius:26px 26px 0 0;padding:20px 20px calc(24px + env(safe-area-inset-bottom))}
+.seg{display:flex;background:var(--bg);border-radius:14px;padding:4px;gap:4px}
+.seg button{flex:1;min-height:44px;border-radius:11px;font-weight:700}
+.seg button.on{background:var(--card);box-shadow:var(--shadow);color:var(--pri)}
+select{width:100%;min-height:50px;border-radius:14px;border:2px solid var(--line);background:var(--card);padding:0 12px}
+input[type=range]{width:100%;accent-color:var(--pri);height:32px}
+.ob{text-align:center;padding:10px 4px}
+.ob .bigE{font-size:64px}
+.ob h2{font-size:1.5em;margin:8px 0}
+.dots{display:flex;justify-content:center;gap:8px;margin:14px 0}
+.dots i{width:9px;height:9px;border-radius:50%;background:var(--line)}.dots i.on{background:var(--pri);width:24px;border-radius:9px}
+.vrow{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--line)}
+.vrow:last-child{border-bottom:0}
+.vrow .nm{font-weight:700;word-break:break-word}
+.vtag{display:inline-block;font-size:.72em;font-weight:700;padding:2px 8px;border-radius:999px;margin:3px 4px 0 0;background:var(--bg);color:var(--muted)}
+.vtag.ok{background:var(--ok-soft);color:var(--ok)}.vtag.warn{background:var(--mid-soft);color:var(--mid)}
+.use{flex:none;min-height:42px;padding:0 14px;border-radius:12px;font-weight:700;border:2px solid var(--line)}
+.use.on{background:var(--pri);border-color:var(--pri);color:#fff}
+.vstat{border-radius:16px;padding:12px 14px;margin-bottom:10px}
+.vstat.ok{background:var(--ok-soft)}.vstat.warn{background:var(--mid-soft)}
+.vbar{display:flex;align-items:center;gap:10px;width:100%;text-align:left;border-radius:16px;padding:12px 14px;margin-top:14px;font-size:.9em}
+.note{font-size:.86em;color:var(--muted);background:var(--card);border-radius:16px;padding:12px 14px;margin-top:12px;border:1px dashed var(--line)}
+</style>
+</head>
+<body>
+<header>
+  <button class="hb" id="back" aria-label="Torna indietro">←</button>
+  <h1 id="title">English Easy</h1>
+  <button class="hb" id="setBtn" aria-label="Impostazioni: voce, testo e fonetica">⚙️</button>
+</header>
+<main id="view" aria-live="polite"></main>
+<nav aria-label="Sezioni">
+  <button data-tab="home" class="on"><span class="ic" aria-hidden="true">📚</span>Studia</button>
+  <button data-tab="quiz"><span class="ic" aria-hidden="true">🎤</span>Interrogami</button>
+  <button data-tab="words"><span class="ic" aria-hidden="true">🔤</span>Parole</button>
+  <button data-tab="help"><span class="ic" aria-hidden="true">🛟</span>Aiuto</button>
+</nav>
+
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="setTitle"><div class="in">
+  <div class="row" style="align-items:center;margin-bottom:8px"><h2 id="setTitle" class="grow" style="font-size:1.4em">Impostazioni</h2><button class="hb" id="closeSet" aria-label="Chiudi">✕</button></div>
+  <p class="label" style="margin-top:12px">🔊 Voce</p>
+  <div class="card" style="margin:0 0 12px;padding:14px">
+    <div id="vStat"></div>
+    <p class="small muted" style="margin:6px 0 4px">Velocità</p>
+    <div class="seg" id="segRate"><button data-rate="0.7">🐢 Lenta</button><button data-rate="0.85">🙂 Media</button><button data-rate="1">🐇 Normale</button></div>
+    <p class="small muted" style="margin:14px 0 2px">Tono (più alto = più leggero)</p>
+    <input type="range" id="pitch" min="0.9" max="1.3" step="0.05" aria-label="Tono della voce">
+    <p class="small" style="margin:14px 0 0"><b>Ascolta e scegli la voce che ti piace</b><br><span class="muted">Tocca ▶ per sentirla, poi «Usa». Le etichette vengono dal nome della voce: fidati del tuo orecchio.</span></p>
+    <div id="vList"></div>
+  </div>
+  <p class="label">👀 Lettura</p>
+  <div class="card" style="margin:0 0 12px;padding:6px 14px">
+    <div class="tog"><span><b>Mostra la fonetica</b><br><span class="small muted">Come si pronuncia, scritto all'italiana</span></span><button class="sw" id="swFon" aria-label="Mostra la fonetica"></button></div>
+    <div class="tog"><span><b>Mostra la traduzione</b><br><span class="small muted">Il significato in italiano</span></span><button class="sw" id="swIt" aria-label="Mostra la traduzione"></button></div>
+    <div class="tog"><span><b>Carattere facilitato</b><br><span class="small muted">Utile per la dislessia (DSA)</span></span><button class="sw" id="swLex" aria-label="Carattere facilitato"></button></div>
+    <div style="padding:10px 0"><p class="small muted" style="margin:0 0 6px">Grandezza del testo</p>
+    <div class="seg" id="segFs"><button data-fs="0">A</button><button data-fs="1" style="font-size:1.15em">A</button><button data-fs="2" style="font-size:1.3em">A</button></div></div>
+  </div>
+  <button class="btn alt" id="introAgain">👋 Rivedi la guida iniziale</button>
+  <button class="btn alt" id="resetBtn">↺ Azzera i miei progressi</button>
+</div></div>
+
+<div class="sheet" id="onb" role="dialog" aria-modal="true" aria-label="Guida iniziale"><div class="in" id="onbIn"></div></div>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+/* =========================================================
+   CONTENUTI — solo dai 3 fogli: Wind power, Hydroelectric
+   power plants (parti sottolineate), Other forms (tidal,
+   geothermal, biomass — parti sottolineate). Semplificati.
+   Ogni frase: [inglese, fonetica all'italiana, traduzione]
+   ========================================================= */
+const TOPICS=[
+{id:"wind",icon:"🌬️",color:"#0284c7",soft:"#e0f4fd",title:"Wind power",it:"Energia eolica",sum:"Il vento fa girare le pale di una turbina, che produce elettricità.",qs:[
+ {q:["Tell me about wind power.","Tèl mi abàut uìnd pàua.","Parlami dell'energia eolica."],
+  st:["Wind power is…","Uìnd pàua is…","L'energia eolica è…"],
+  s:[["Wind power is a renewable energy source.","Uìnd pàua is a rinìuabol ènegi sòos.","L'energia eolica è una fonte di energia rinnovabile."],
+     ["A wind turbine uses the wind to make electricity.","A uìnd tèebain iùusis dhe uìnd tu mèik ilektrìsiti.","Una turbina eolica usa il vento per produrre elettricità."],
+     ["It is clean, but the wind doesn't always blow.","It is klìin, bat dhe uìnd dàsent òoluèis blòu.","È pulita, ma il vento non soffia sempre."]],
+  k:[["wind turbine","uìnd tèebain","turbina eolica"],["renewable","rinìuabol","rinnovabile"],["clean","klìin","pulito"],["blow","blòu","soffiare"]]},
+ {q:["What is wind power?","Uòt is uìnd pàua?","Che cos'è l'energia eolica?"],
+  st:["Wind power is…","Uìnd pàua is…","L'energia eolica è…"],
+  s:[["Wind power is a renewable energy source.","Uìnd pàua is a rinìuabol ènegi sòos.","L'energia eolica è una fonte di energia rinnovabile."],
+     ["It uses the wind to produce electricity.","It iùusis dhe uìnd tu prodiùus ilektrìsiti.","Usa il vento per produrre elettricità."]],
+  k:[["wind","uìnd","vento"],["renewable","rinìuabol","rinnovabile"],["energy source","ènegi sòos","fonte di energia"],["electricity","ilektrìsiti","elettricità"]]},
+ {q:["How does a wind turbine work?","Hàu das a uìnd tèebain uèek?","Come funziona una turbina eolica?"],
+  st:["First… Then… Finally…","Fèest… Dhen… Fàinali…","Prima… Poi… Infine…"],
+  s:[["A wind turbine changes wind energy into mechanical energy.","A uìnd tèebain cèingis uìnd ènegi ìntu mekànikol ènegi.","Una turbina eolica trasforma l'energia del vento in energia meccanica."],
+     ["First, the wind turns the blades.","Fèest, dhe uìnd tèens dhe blèids.","Prima, il vento fa girare le pale."],
+     ["Then, the blades spin a shaft connected to a generator.","Dhen, dhe blèids spin a sciàaft konèktid tu a gènereita.","Poi, le pale fanno girare un albero collegato a un generatore."],
+     ["Finally, the generator produces electricity.","Fàinali, dhe gènereita prodiùusis ilektrìsiti.","Infine, il generatore produce elettricità."]],
+  k:[["turbine","tèebain","turbina"],["blades","blèids","pale"],["shaft","sciàaft","albero (asse)"],["generator","gènereita","generatore"],["mechanical","mekànikol","meccanico"]]},
+ {q:["What does the amount of electricity depend on?","Uòt das dhi amàunt ov ilektrìsiti dipènd on?","Da cosa dipende la quantità di elettricità?"],
+  st:["It depends on…","It dipènds on…","Dipende da…"],
+  s:[["The amount of electricity depends on the blades.","Dhi amàunt ov ilektrìsiti dipènds on dhe blèids.","La quantità di elettricità dipende dalle pale."],
+     ["It depends on their size and on their length.","It dipènds on dhèe sàis end on dhèe lènth.","Dipende dalla loro dimensione e dalla loro lunghezza."],
+     ["Bigger and longer blades make more electricity.","Bìga end lònga blèids mèik mòo ilektrìsiti.","Pale più grandi e più lunghe producono più elettricità."]],
+  k:[["amount","amàunt","quantità"],["depends on","dipènds on","dipende da"],["size","sàis","dimensione"],["length","lènth","lunghezza"]]},
+ {q:["What are the two main types of wind turbines?","Uòt aa dhe tuu mèin tàips ov uìnd tèebains?","Quali sono i due tipi principali di turbine eoliche?"],
+  st:["There are two main types:…","Dhèe aa tuu mèin tàips…","Ci sono due tipi principali:…"],
+  s:[["There are two main types: horizontal-axis and vertical-axis turbines.","Dhèe aa tuu mèin tàips: horizòntol àksis end vèetikol àksis tèebains.","Ci sono due tipi principali: turbine ad asse orizzontale e ad asse verticale."],
+     ["Horizontal-axis turbines usually have three blades.","Horizòntol àksis tèebains iùusciuali hev thrìi blèids.","Le turbine ad asse orizzontale di solito hanno tre pale."],
+     ["They are often grouped together in wind farms.","Dhèi aa òfen grùupt tughèdha in uìnd faams.","Spesso sono raggruppate in parchi eolici."],
+     ["They give power to the electricity grid.","Dhèi ghiv pàua tu dhi ilektrìsiti grid.","Danno energia alla rete elettrica."],
+     ["Vertical-axis turbines usually have two blades.","Vèetikol àksis tèebains iùusciuali hev tuu blèids.","Le turbine ad asse verticale di solito hanno due pale."]],
+  k:[["horizontal","horizòntol","orizzontale"],["vertical","vèetikol","verticale"],["axis","àksis","asse"],["wind farm","uìnd faam","parco eolico"],["grid","grid","rete elettrica"]]},
+ {q:["What are the advantages of wind power?","Uòt aa dhi edvàantigis ov uìnd pàua?","Quali sono i vantaggi dell'energia eolica?"],
+  st:["The main advantages are…","Dhe mèin edvàantigis aa…","I vantaggi principali sono…"],
+  s:[["Wind is a renewable energy source.","Uìnd is a rinìuabol ènegi sòos.","Il vento è una fonte di energia rinnovabile."],
+     ["It doesn't produce emissions.","It dàsent prodiùus imìsciens.","Non produce emissioni."],
+     ["Wind turbines don't need water for cooling.","Uìnd tèebains dòunt nìid uòota fo kùuling.","Le turbine eoliche non hanno bisogno di acqua per il raffreddamento."]],
+  k:[["advantages","edvàantigis","vantaggi"],["emissions","imìsciens","emissioni"],["water","uòota","acqua"],["cooling","kùuling","raffreddamento"]]},
+ {q:["What are the disadvantages of wind power?","Uòt aa dhe disedvàantigis ov uìnd pàua?","Quali sono gli svantaggi dell'energia eolica?"],
+  st:["The main disadvantages are…","Dhe mèin disedvàantigis aa…","Gli svantaggi principali sono…"],
+  s:[["The wind is intermittent: it doesn't always blow.","Dhe uìnd is intamìtent: it dàsent òoluèis blòu.","Il vento è intermittente: non soffia sempre."],
+     ["The best places are often in remote areas.","Dhe bèst plèisis aa òfen in rimòut èerias.","I posti migliori sono spesso in zone isolate."],
+     ["Turbines make noise and can change the landscape.","Tèebains mèik nòis end ken cèing dhe lèndskeip.","Le turbine fanno rumore e possono cambiare il paesaggio."],
+     ["The blades can kill birds and bats.","Dhe blèids ken kil bèeds end bèts.","Le pale possono uccidere uccelli e pipistrelli."]],
+  k:[["intermittent","intamìtent","intermittente"],["remote","rimòut","isolato, lontano"],["noise","nòis","rumore"],["landscape","lèndskeip","paesaggio"],["birds and bats","bèeds end bèts","uccelli e pipistrelli"]]}
+]},
+{id:"hydro",icon:"💧",color:"#2563eb",soft:"#e3ebfd",title:"Hydroelectric power",it:"Energia idroelettrica",sum:"L'acqua di un fiume, fermata da una diga, fa girare una turbina e produce elettricità.",qs:[
+ {q:["Tell me about hydropower.","Tèl mi abàut hàidropaua.","Parlami dell'energia idroelettrica."],
+  st:["Hydropower is…","Hàidropaua is…","L'energia idroelettrica è…"],
+  s:[["Hydropower uses water to make electricity.","Hàidropaua iùusis uòota tu mèik ilektrìsiti.","L'energia idroelettrica usa l'acqua per produrre elettricità."],
+     ["A dam stores water, and the water turns a turbine.","A dèm stòos uòota, end dhe uòota tèens a tèebain.","Una diga raccoglie l'acqua, e l'acqua fa girare una turbina."],
+     ["It is clean and cheap to run, but the dam changes the environment.","It is klìin end cìip tu ran, bat dhe dèm cèingis dhi envàiranment.","È pulita ed economica da gestire, ma la diga cambia l'ambiente."]],
+  k:[["hydropower","hàidropaua","energia idroelettrica"],["dam","dèm","diga"],["turbine","tèebain","turbina"],["environment","envàiranment","ambiente"]]},
+ {q:["What is hydropower?","Uòt is hàidropaua?","Che cos'è l'energia idroelettrica?"],
+  st:["Hydropower is…","Hàidropaua is…","L'energia idroelettrica è…"],
+  s:[["Hydropower uses the energy of water to make electricity.","Hàidropaua iùusis dhi ènegi ov uòota tu mèik ilektrìsiti.","L'energia idroelettrica usa l'energia dell'acqua per produrre elettricità."],
+     ["It changes mechanical energy into electrical energy.","It cèingis mekànikol ènegi ìntu ilèktrikol ènegi.","Trasforma l'energia meccanica in energia elettrica."],
+     ["About one sixth of the world's electricity comes from hydropower.","Abàut uàn sìksth ov dhe uèelds ilektrìsiti kams from hàidropaua.","Circa un sesto dell'elettricità del mondo viene dall'energia idroelettrica."],
+     ["In some countries, it is the main source of electricity.","In sam kàntris, it is dhe mèin sòos ov ilektrìsiti.","In alcuni Paesi è la fonte principale di elettricità."]],
+  k:[["hydropower","hàidropaua","energia idroelettrica"],["water","uòota","acqua"],["electrical","ilèktrikol","elettrico"],["one sixth","uàn sìksth","un sesto"],["countries","kàntris","Paesi"]]},
+ {q:["How does a hydropower plant work?","Hàu das a hàidropaua plàant uèek?","Come funziona una centrale idroelettrica?"],
+  st:["First… Then… Finally…","Fèest… Dhen… Fàinali…","Prima… Poi… Infine…"],
+  s:[["First, a dam on a river stores water in a reservoir.","Fèest, a dèm on a rìva stòos uòota in a rèsevuaa.","Prima, una diga su un fiume raccoglie l'acqua in un bacino."],
+     ["Then, the water flows through a pipe, called a penstock.","Dhen, dhe uòota flòus thruu a pàip, kòold a pènstok.","Poi, l'acqua scorre in un tubo, chiamato condotta forzata."],
+     ["The water turns the blades of a turbine.","Dhe uòota tèens dhe blèids ov a tèebain.","L'acqua fa girare le pale di una turbina."],
+     ["The turbine activates a generator, which produces electricity.","Dhe tèebain àktiveits a gènereita, uìc prodiùusis ilektrìsiti.","La turbina attiva un generatore, che produce elettricità."],
+     ["Finally, the water goes back into the river.","Fàinali, dhe uòota gòus bèk ìntu dhe rìva.","Infine, l'acqua torna nel fiume."]],
+  k:[["dam","dèm","diga"],["river","rìva","fiume"],["reservoir","rèsevuaa","bacino idrico"],["penstock","pènstok","condotta forzata"],["pipe","pàip","tubo"]]},
+ {q:["What are the advantages of hydropower?","Uòt aa dhi edvàantigis ov hàidropaua?","Quali sono i vantaggi dell'energia idroelettrica?"],
+  st:["The main advantages are…","Dhe mèin edvàantigis aa…","I vantaggi principali sono…"],
+  s:[["A hydropower plant is expensive to build, but cheap to run.","A hàidropaua plàant is ikspènsiv tu bìld, bat cìip tu ran.","Una centrale idroelettrica costa tanto da costruire, ma poco da far funzionare."],
+     ["It uses water, so it is a clean source of energy.","It iùusis uòota, sou it is a klìin sòos ov ènegi.","Usa l'acqua, quindi è una fonte di energia pulita."],
+     ["It is efficient and it doesn't pollute the air.","It is ifìscent end it dàsent polùut dhi èe.","È efficiente e non inquina l'aria."],
+     ["It is more reliable and cheaper than fossil fuels.","It is mòo rilàiabol end cìipa dhen fòsil fiùuels.","È più affidabile e più economica dei combustibili fossili."],
+     ["We can control the water, so we make electricity when we need it.","Uì ken kontròul dhe uòota, sou uì mèik ilektrìsiti uèn uì nìid it.","Possiamo controllare l'acqua, quindi produciamo elettricità quando ci serve."]],
+  k:[["expensive","ikspènsiv","costoso"],["cheap","cìip","economico"],["clean","klìin","pulito"],["pollute","polùut","inquinare"],["fossil fuels","fòsil fiùuels","combustibili fossili"]]},
+ {q:["What are the disadvantages of hydropower?","Uòt aa dhe disedvàantigis ov hàidropaua?","Quali sono gli svantaggi dell'energia idroelettrica?"],
+  st:["The main disadvantages are…","Dhe mèin disedvàantigis aa…","Gli svantaggi principali sono…"],
+  s:[["The dam has a big impact on the environment.","Dhe dèm hes a bìg ìmpakt on dhi envàiranment.","La diga ha un grande impatto sull'ambiente."],
+     ["People, animals and plants can lose their natural habitat.","Pìipol, ènimols end plàants ken lùus dhèe nèciural hèbitat.","Persone, animali e piante possono perdere il loro habitat naturale."],
+     ["A dam can stop fish migration and change the water temperature.","A dèm ken stop fisc maigrèiscen end cèing dhe uòota tèmprecia.","Una diga può bloccare la migrazione dei pesci e cambiare la temperatura dell'acqua."],
+     ["This is bad for the plants and animals of the river.","Dhis is bèd fo dhe plàants end ènimols ov dhe rìva.","Questo fa male alle piante e agli animali del fiume."]],
+  k:[["impact","ìmpakt","impatto"],["environment","envàiranment","ambiente"],["habitat","hèbitat","habitat"],["fish","fisc","pesci"],["temperature","tèmprecia","temperatura"]]}
+]},
+{id:"tidal",icon:"🌊",color:"#0f766e",soft:"#dcf5f1",title:"Tidal energy",it:"Energia delle maree",sum:"Il mare sale e scende: l'acqua entra ed esce da un bacino e fa girare una turbina.",qs:[
+ {q:["Tell me about tidal energy.","Tèl mi abàut tàidol ènegi.","Parlami dell'energia delle maree."],
+  st:["Tidal energy is…","Tàidol ènegi is…","L'energia delle maree è…"],
+  s:[["Tidal energy uses the rise and fall of ocean tides.","Tàidol ènegi iùusis dhe ràis end fòol ov òuscen tàids.","L'energia delle maree usa il salire e scendere delle maree."],
+     ["A barrage lets the water in and out through a turbine.","A bèraasc lèts dhe uòota in end àut thruu a tèebain.","Uno sbarramento fa entrare e uscire l'acqua attraverso una turbina."],
+     ["It is clean and reliable, but we can't build it everywhere.","It is klìin end rilàiabol, bat uì kàant bìld it èvriuee.","È pulita e affidabile, ma non si può costruire dappertutto."]],
+  k:[["tide","tàid","marea"],["barrage","bèraasc","sbarramento"],["reliable","rilàiabol","affidabile"],["everywhere","èvriuee","dappertutto"]]},
+ {q:["What is tidal energy?","Uòt is tàidol ènegi?","Che cos'è l'energia delle maree?"],
+  st:["Tidal energy is…","Tàidol ènegi is…","L'energia delle maree è…"],
+  s:[["Tidal energy is a renewable energy.","Tàidol ènegi is a rinìuabol ènegi.","L'energia delle maree è un'energia rinnovabile."],
+     ["It uses the rise and fall of ocean tides.","It iùusis dhe ràis end fòol ov òuscen tàids.","Usa il salire e scendere delle maree dell'oceano."],
+     ["It also uses ocean currents.","It òolsou iùusis òuscen kàrents.","Usa anche le correnti dell'oceano."]],
+  k:[["tide","tàid","marea"],["rise and fall","ràis end fòol","salita e discesa"],["ocean","òuscen","oceano"],["currents","kàrents","correnti"]]},
+ {q:["How does a tidal energy system work?","Hàu das a tàidol ènegi sìstem uèek?","Come funziona un impianto a energia delle maree?"],
+  st:["It uses a structure called…","It iùusis a stràkcia kòold…","Usa una struttura chiamata…"],
+  s:[["It uses a structure similar to a dam, called a barrage.","It iùusis a stràkcia sìmila tu a dèm, kòold a bèraasc.","Usa una struttura simile a una diga, chiamata sbarramento."],
+     ["The barrage is built across a bay or a lagoon.","Dhe bèraasc is bìlt akròs a bèi o a lagùun.","Lo sbarramento è costruito all'ingresso di una baia o di una laguna."],
+     ["Sluice gates control the water.","Slùus ghèits kontròul dhe uòota.","Le chiuse controllano l'acqua."],
+     ["At high tide, the water comes in and fills the basin.","Et hài tàid, dhe uòota kams in end fils dhe bèisin.","Con l'alta marea, l'acqua entra e riempie il bacino."],
+     ["At low tide, the water goes out through a turbine and makes electricity.","Et lòu tàid, dhe uòota gòus àut thruu a tèebain end mèiks ilektrìsiti.","Con la bassa marea, l'acqua esce passando da una turbina e produce elettricità."]],
+  k:[["barrage","bèraasc","sbarramento"],["lagoon","lagùun","laguna"],["sluice gate","slùus ghèit","chiusa"],["high tide","hài tàid","alta marea"],["low tide (ebb tide)","lòu tàid (eb tàid)","bassa marea"],["basin","bèisin","bacino"]]},
+ {q:["What is a two-way tidal power system?","Uòt is a tùu-uèi tàidol pàua sìstem?","Che cos'è un impianto a marea a doppio senso?"],
+  st:["A two-way system…","A tùu-uèi sìstem…","Un impianto a doppio senso…"],
+  s:[["A two-way system makes electricity with both tides.","A tùu-uèi sìstem mèiks ilektrìsiti uìdh bòuth tàids.","Un impianto a doppio senso produce elettricità con entrambe le maree."],
+     ["It works when the water comes in and when it goes out.","It uèeks uèn dhe uòota kams in end uèn it gòus àut.","Funziona quando l'acqua entra e quando esce."]],
+  k:[["two-way","tùu-uèi","a doppio senso"],["both","bòuth","entrambi"],["comes in","kams in","entra"],["goes out","gòus àut","esce"]]},
+ {q:["What are the pros and cons of tidal energy?","Uòt aa dhe pròus end kons ov tàidol ènegi?","Quali sono i pro e i contro dell'energia delle maree?"],
+  st:["The advantages are… Unfortunately…","Dhi edvàantigis aa… Anfòociunetli…","I vantaggi sono… Purtroppo…"],
+  s:[["Tidal energy is renewable and cheap.","Tàidol ènegi is rinìuabol end cìip.","L'energia delle maree è rinnovabile ed economica."],
+     ["It doesn't produce waste or harmful emissions.","It dàsent prodiùus uèist o hàamful imìsciens.","Non produce rifiuti né emissioni dannose."],
+     ["Tides are predictable, so the power is reliable.","Tàids aa pridìktabol, sou dhe pàua is rilàiabol.","Le maree sono prevedibili, quindi l'energia è affidabile."],
+     ["Unfortunately, we can't build tidal power plants everywhere.","Anfòociunetli, uì kàant bìld tàidol pàua plàants èvriuee.","Purtroppo, non possiamo costruire centrali a marea dappertutto."]],
+  k:[["waste","uèist","rifiuti"],["harmful","hàamful","dannoso"],["predictable","pridìktabol","prevedibile"],["reliable","rilàiabol","affidabile"],["unfortunately","anfòociunetli","purtroppo"]]}
+]},
+{id:"geo",icon:"🌋",color:"#c2410c",soft:"#fde9dc",title:"Geothermal energy",it:"Energia geotermica",sum:"Il calore che viene dal centro della Terra produce energia, senza bruciare nulla.",qs:[
+ {q:["What is geothermal energy?","Uòt is giiouthèemol ènegi?","Che cos'è l'energia geotermica?"],
+  st:["Geothermal energy is…","Giiouthèemol ènegi is…","L'energia geotermica è…"],
+  s:[["Geothermal energy is a renewable energy source.","Giiouthèemol ènegi is a rinìuabol ènegi sòos.","L'energia geotermica è una fonte di energia rinnovabile."],
+     ["It comes from the heat inside the Earth.","It kams from dhe hìit insàid dhi Èeth.","Viene dal calore all'interno della Terra."],
+     ["This heat comes from the slow decay of radioactive particles in the Earth's core.","Dhis hìit kams from dhe slòu dikèi ov reidioàktiv pàatikols in dhi Èeths kòo.","Questo calore viene dal lento decadimento di particelle radioattive nel nucleo della Terra."],
+     ["Geothermal power plants don't burn fuels.","Giiouthèemol pàua plàants dòunt bèen fiùuels.","Le centrali geotermiche non bruciano combustibili."]],
+  k:[["heat","hìit","calore"],["Earth's core","Èeths kòo","nucleo della Terra"],["slow decay","slòu dikèi","lento decadimento"],["radioactive","reidioàktiv","radioattivo"],["burn fuels","bèen fiùuels","bruciare combustibili"]]}
+]},
+{id:"bio",icon:"🌱",color:"#15803d",soft:"#dff5e6",title:"Biomass",it:"Biomassa",sum:"Piante e materiali animali contengono energia del sole: si possono bruciare o trasformare in carburanti.",qs:[
+ {q:["Tell me about biomass.","Tèl mi abàut bàiomes.","Parlami della biomassa."],
+  st:["Biomass is…","Bàiomes is…","La biomassa è…"],
+  s:[["Biomass is organic material from plants and animals.","Bàiomes is oogànik matìirial from plàants end ènimols.","La biomassa è materiale organico che viene da piante e animali."],
+     ["It contains energy from the sun.","It kontèins ènegi from dhe san.","Contiene energia del sole."],
+     ["We can burn it, or change it into gas and fuels.","Uì ken bèen it, o cèing it ìntu ghes end fiùuels.","Possiamo bruciarla, oppure trasformarla in gas e carburanti."]],
+  k:[["biomass","bàiomes","biomassa"],["organic","oogànik","organico"],["burn","bèen","bruciare"],["fuels","fiùuels","carburanti"]]},
+ {q:["What is biomass?","Uòt is bàiomes?","Che cos'è la biomassa?"],
+  st:["Biomass is…","Bàiomes is…","La biomassa è…"],
+  s:[["Biomass is organic material from plants and animals.","Bàiomes is oogànik matìirial from plàants end ènimols.","La biomassa è materiale organico che viene da piante e animali."],
+     ["It contains energy from the sun.","It kontèins ènegi from dhe san.","Contiene energia del sole."],
+     ["Plants absorb the sun's energy through photosynthesis.","Plàants absòob dhe sans ènegi thruu fòutosìnthesis.","Le piante assorbono l'energia del sole con la fotosintesi."]],
+  k:[["organic","oogànik","organico"],["plants","plàants","piante"],["sun","san","sole"],["absorb","absòob","assorbire"],["photosynthesis","fòutosìnthesis","fotosintesi"]]},
+ {q:["How can we use the energy in biomass?","Hàu ken uì iùus dhi ènegi in bàiomes?","Come possiamo usare l'energia della biomassa?"],
+  st:["We can… We can also…","Uì ken… Uì ken òolsou…","Possiamo… Possiamo anche…"],
+  s:[["We can burn biomass to get heat.","Uì ken bèen bàiomes tu ghet hìit.","Possiamo bruciare la biomassa per avere calore."],
+     ["But burning is only one way.","Bat bèening is òunli uàn uèi.","Ma bruciarla è solo un modo."],
+     ["We can also change it into methane gas.","Uì ken òolsou cèing it ìntu mìithein ghes.","Possiamo anche trasformarla in gas metano."],
+     ["Or we can change it into fuels for transport, like ethanol and biodiesel.","O uì ken cèing it ìntu fiùuels fo trànspoot, làik èthanol end bàiodiizol.","Oppure possiamo trasformarla in carburanti per i trasporti, come etanolo e biodiesel."]],
+  k:[["burn","bèen","bruciare"],["way","uèi","modo"],["methane","mìithein","metano"],["fuels","fiùuels","carburanti"],["ethanol","èthanol","etanolo"],["biodiesel","bàiodiizol","biodiesel"]]}
+]}
+];
+
+const PHRASES=[
+ {t:"Per cominciare",items:[["Well…","Uèl…","Allora…"],["The main idea is…","Dhe mèin aidìa is…","L'idea principale è…"],["…is a renewable energy source.","…is a rinìuabol ènegi sòos.","…è una fonte di energia rinnovabile."]]},
+ {t:"Per prendere tempo, senza panico",items:[["Let me think for a second.","Lèt mi thìnk fo a sèkond.","Fammi pensare un attimo."],["Can you repeat the question, please?","Ken iu ripìit dhe kuèsciun, plìis?","Può ripetere la domanda, per favore?"],["Can you speak slowly, please?","Ken iu spìik slòuli, plìis?","Può parlare lentamente, per favore?"]]},
+ {t:"Per collegare le frasi",items:[["First… Then… Finally…","Fèest… Dhen… Fàinali…","Prima… Poi… Infine…"],["Also…","Òolsou…","Inoltre…"],["But…","Bat…","Ma…"],["So…","Sou…","Quindi…"],["For example…","Fo igzàampol…","Per esempio…"],["Unfortunately…","Anfòociunetli…","Purtroppo…"]]},
+ {t:"Se non ricordi una parola",items:[["I don't remember the word in English.","Ài dòunt rimèmba dhe uèed in Ìnglisc.","Non ricordo la parola in inglese."],["It's like a…","Its làik a…","È come un/una…"],["In Italian we say…","In itàlian uì sèi…","In italiano diciamo…"]]},
+ {t:"Per finire",items:[["That's all.","Dhèts òol.","È tutto."],["Thank you.","Thènk iu.","Grazie."]]}
+];
+
+const FON_RULES=[
+ ["à è ì ò ù","La vocale con l'accento è la sillaba forte: dilla un po' più forte e più lunga. Es. uòota = water."],
+ ["niente «r»","Nell'inglese britannico la «r» dopo una vocale non si pronuncia: per questo non la trovi scritta. Es. pàua = power, rìva = river."],
+ ["èe","Una «e» lunga e rilassata, quasi una «ö». Es. tèebain = turbine, uèek = work."],
+ ["a finale","Una «a» debole e corta, appena accennata. Es. gènereita = generator."],
+ ["dh","Come «d», ma con la punta della lingua tra i denti. Es. dhe = the."],
+ ["th","Come «t», ma con la lingua tra i denti e solo aria. Es. thrìi = three."],
+ ["h","All'inizio di parola è un soffio, come quando appanni un vetro. Es. hìit = heat."],
+ ["u + vocale","Si legge veloce, come in «uovo». Es. uìnd = wind."],
+ ["ii · uu · oo · aa","Vocale doppia = suono lungo. Es. klìin = clean, kùuling = cooling, sòos = source."],
+ ["sc · c","«sc» come in «scena» (sciàaft = shaft). «c» finale come in «ciao» (uìc = which)."],
+ ["gh · g","«gh» è sempre g dura (ghes = gas). «g» davanti a e/i è dolce (gènereita)."]
+];
+
+/* ====================== STATO ====================== */
+const store={get(k,d){try{const v=localStorage.getItem(k);return v===null?d:JSON.parse(v)}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+let scores=store.get("ee_scores2",{});
+let P=Object.assign({fs:0,lex:false,fon:true,it:true,rate:0.7,pitch:1.1,voice:""},store.get("ee_prefs",{}));
+if(P.v!==3){P.voice="";P.rate=0.7;P.pitch=1.1;P.v=3;}  /* nuova versione: voce britannica + lenta */
+const savePrefs=()=>store.set("ee_prefs",P);savePrefs();
+const qid=(t,i)=>TOPICS[t].id+"_"+i;
+const ALL=[];TOPICS.forEach((t,ti)=>t.qs.forEach((_,i)=>ALL.push([ti,i])));
+const GLOSS=[];{const seen=new Set();TOPICS.forEach((t,ti)=>t.qs.forEach(q=>q.k.forEach(k=>{if(!seen.has(k[0].toLowerCase())){seen.add(k[0].toLowerCase());GLOSS.push({k,ti})}})))}
+
+/* ====================== VOCE ======================
+   Le voci sono quelle installate sul dispositivo: l'app NON può
+   garantire che sia femminile. Cerca, in ordine:
+   1) britannica con nome femminile noto  2) altra voce inglese con nome femminile noto
+   3) britannica di genere sconosciuto     4) qualsiasi voce inglese
+   e mostra sempre quale sta usando davvero. */
+const FEMALE_NAMES=/\b(serena|kate|stephanie|martha|sonia|libby|maisie|hazel|susan|fiona|moira|tessa|karen|samantha|ava|allison|victoria|zira|aria|jenny|emma|amy|natasha|clara|joanna|salli|kimberly|ivy|kendra|nicky|catherine|veena|nora|zoe|joelle|shelley|sandy|flo|grandma)\b|female|google us english/i;
+const MALE_NAMES=/\b(daniel|alex|fred|tom|aaron|arthur|gordon|rishi|oliver|guy|ryan|christopher|eric|roger|david|mark|george|james|thomas|albert|bruce|ralph|junior|reed|rocko|grandpa|eddy|brian|malcolm|lee|evan|nathan|tony)\b|\bmale\b/i;
+const PREF_GB=["Serena","Kate","Stephanie","Martha","Sonia","Libby","Maisie","Hazel","Google UK English Female","Amy","Emma","Fiona"];
+const PREF_OTHER=["Moira","Karen","Samantha","Tessa","Catherine","Ava","Allison","Susan","Victoria","Aria","Jenny","Zira","Google US English"];
+let voices=[],voice=null;
+const isFem=v=>FEMALE_NAMES.test(v.name)&&!MALE_NAMES.test(v.name.replace(/female/i,""));
+const isMale=v=>MALE_NAMES.test(v.name.replace(/female/i,""));
+const isGB=v=>/en[-_]GB|scotland/i.test(v.lang);
+const accent=v=>/GB|scotland/i.test(v.lang)?"🇬🇧 britannica":/US/i.test(v.lang)?"🇺🇸 americana":/AU/i.test(v.lang)?"🇦🇺 australiana":/IE/i.test(v.lang)?"🇮🇪 irlandese":/IN/i.test(v.lang)?"🇮🇳 indiana":/ZA/i.test(v.lang)?"🇿🇦 sudafricana":/CA/i.test(v.lang)?"🇨🇦 canadese":"inglese";
+const byName=(list,names)=>{for(const n of names){const v=list.find(x=>x.name.toLowerCase().includes(n.toLowerCase())&&!isMale(x));if(v)return v}return null};
+function loadVoices(){
+  if(!("speechSynthesis" in window))return;
+  try{voices=speechSynthesis.getVoices().filter(v=>/^en/i.test(v.lang))}catch(e){voices=[]}
+  voice=P.voice?voices.find(v=>v.name===P.voice)||null:null;
+  if(!voice){
+    const gb=voices.filter(isGB);
+    voice=byName(gb,PREF_GB)||gb.find(isFem)
+        ||byName(voices,PREF_OTHER)||voices.find(isFem)
+        ||gb.find(v=>!isMale(v))||gb[0]||voices.find(v=>!isMale(v))||voices[0]||null;
+  }
+  renderVoiceUI();
+}
+if("speechSynthesis" in window){loadVoices();try{speechSynthesis.onvoiceschanged=loadVoices}catch(e){}[300,1000,2500,5000].forEach(t=>setTimeout(()=>{if(!voices.length)loadVoices()},t))}
+function vInfo(){
+  if(!("speechSynthesis" in window))return{cls:"warn",html:"⚠️ Questo browser non ha la lettura vocale. Apri l'app con Safari o Chrome."};
+  if(!voices.length)return{cls:"warn",html:"⚠️ Il telefono non mostra all'app l'elenco delle voci, quindi uso la <b>voce inglese predefinita del telefono</b>, e non so se è femminile. Per cambiarla guarda in <b>Aiuto › La voce</b>."};
+  if(!voice)return{cls:"warn",html:"⚠️ Nessuna voce inglese trovata."};
+  const f=isFem(voice),m=isMale(voice);
+  return{cls:f?"ok":"warn",html:`🔊 Voce in uso: <b>${esc(voice.name)}</b><br><span class="small">${accent(voice)} · ${f?"femminile":m?"<b>maschile</b>: scegline un'altra qui sotto":"genere non indicato dal telefono: ascoltala e, se non va bene, scegline un'altra"}</span>`};
+}
+function renderVoiceUI(){
+  const st=document.getElementById("vStat"),li=document.getElementById("vList");
+  if(st){const i=vInfo();st.innerHTML=`<div class="vstat ${i.cls}">${i.html}</div>`}
+  if(li){
+    if(!voices.length){li.innerHTML=`<p class="small muted">Nessuna voce da scegliere su questo dispositivo.</p>`}
+    else{
+      const rank=v=>(isFem(v)?4:isMale(v)?0:2)+(isGB(v)?1:0);
+      const list=[...voices].sort((x,y)=>rank(y)-rank(x)||x.name.localeCompare(y.name));
+      li.innerHTML=`<div class="vrow"><div class="grow"><span class="nm">✨ Automatica</span><br><span class="small muted">Sceglie l'app (preferisce britannica femminile)</span></div><button class="use ${!P.voice?"on":""}" data-use="">${!P.voice?"✓ In uso":"Usa"}</button></div>`+
+      list.map(v=>`<div class="vrow"><button class="play sm soft" data-vtest="${esc(v.name)}" aria-label="Ascolta ${esc(v.name)}">▶</button><div class="grow"><span class="nm">${esc(v.name)}</span><br><span class="vtag">${accent(v)}</span>${isFem(v)?`<span class="vtag ok">femminile</span>`:isMale(v)?`<span class="vtag warn">maschile</span>`:`<span class="vtag">genere ?</span>`}</div><button class="use ${P.voice===v.name?"on":""}" data-use="${esc(v.name)}">${P.voice===v.name?"✓ In uso":"Usa"}</button></div>`).join("");
+    }
+  }
+  const hb=document.getElementById("vBar");if(hb)hb.outerHTML=voiceBar();
+}
+function voiceBar(){
+  const i=vInfo();
+  return `<button class="vbar vstat ${i.cls}" id="vBar" data-opensettings="1">${i.cls==="ok"?`🔊 Voce: <b>${esc(voice.name)}</b> · ${accent(voice)} · femminile`:`⚠️ <span>La voce potrebbe non essere femminile. <b>Tocca qui</b> per ascoltare e scegliere.</span>`}</button>`;
+}
+let spBtn=null,seq=0;
+function utter(text,rate){
+  if(!voice)loadVoices();
+  const u=new SpeechSynthesisUtterance(text.replace(/…/g,", "));
+  u.lang=voice?voice.lang:"en-GB";if(voice){try{u.voice=voice}catch(e){}}u.rate=rate||P.rate;u.pitch=P.pitch;return u;
+}
+function say(u){try{speechSynthesis.resume()}catch(e){}speechSynthesis.speak(u)}
+function speak(text,btn,rate){
+  if(!("speechSynthesis" in window)){toast("La voce non è disponibile su questo dispositivo");return}
+  try{stopAll();
+    const u=utter(text,rate);
+    if(btn){btn.classList.add("speaking");spBtn=btn;u.onend=u.onerror=()=>btn.classList.remove("speaking")}
+    say(u)}catch(e){toast("La voce non è disponibile")}
+}
+function speakP(text,my){return new Promise(res=>{
+  if(!("speechSynthesis" in window))return res();
+  const u=utter(text);let done=false;const fin=()=>{if(!done){done=true;res()}};
+  u.onend=fin;u.onerror=fin;setTimeout(fin,text.length*120/P.rate+3000);
+  try{say(u)}catch(e){fin()}
+})}
+function stopAll(){seq++;try{if("speechSynthesis" in window)speechSynthesis.cancel()}catch(e){}
+  if(spBtn){spBtn.classList.remove("speaking");spBtn=null}
+  document.querySelectorAll(".sent.now,.sent.yourturn").forEach(e=>e.classList.remove("now","yourturn"));
+  document.querySelectorAll("[data-mode].on").forEach(b=>{b.classList.remove("on");b.innerHTML=b.dataset.label});}
+const wait=ms=>new Promise(r=>setTimeout(r,ms));
+async function runSentences(mode,btn){
+  const els=[...document.querySelectorAll(".sent")];if(!els.length)return;
+  if(btn.classList.contains("on")){stopAll();return}
+  stopAll();const my=seq;btn.classList.add("on");btn.innerHTML="⏹ Ferma";
+  for(const el of els){
+    if(my!==seq)return;
+    el.classList.add("now");el.scrollIntoView({behavior:"smooth",block:"center"});
+    await speakP(el.dataset.en);
+    if(my!==seq)return;
+    el.classList.remove("now");
+    if(mode==="repeat"){
+      el.classList.add("yourturn");
+      const w=el.dataset.en.split(/\s+/).length;
+      const t=el.querySelector(".turn");
+      let ms=Math.max(2500,w*650/P.rate);
+      const end=Date.now()+ms;
+      while(Date.now()<end){if(my!==seq)return;t.textContent=`🎙️ Tocca a te! Ripeti ad alta voce… ${Math.ceil((end-Date.now())/1000)}`;await wait(250)}
+      el.classList.remove("yourturn");
+    }else await wait(350);
+  }
+  if(my===seq){btn.classList.remove("on");btn.innerHTML=btn.dataset.label;toast(mode==="repeat"?"Bravissimo/a! 👏 Riprova finché ti viene naturale":"Fine 👍")}
+}
+
+/* ====================== UTILITÀ UI ====================== */
+const $v=document.getElementById("view");
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const play=(t,c="",lab="Ascolta")=>`<button class="play ${c}" data-say="${esc(t)}" aria-label="${lab}: ${esc(t)}">▶</button>`;
+const words=en=>esc(en).split(/(\s+)/).map(p=>/\S/.test(p)?`<span class="w" data-word="${p.replace(/[^A-Za-z'’-]/g,"")}">${p}</span>`:p).join("");
+function toast(m){const t=document.getElementById("toast");t.textContent=m;t.classList.add("show");clearTimeout(t._h);t._h=setTimeout(()=>t.classList.remove("show"),2600)}
+function head(t,b){document.getElementById("title").textContent=t;document.getElementById("back").classList.toggle("show",!!b)}
+function tPct(ti){let s=0;const t=TOPICS[ti];t.qs.forEach((_,i)=>{const v=scores[qid(ti,i)];if(v===3)s+=1;else if(v===2)s+=.5});return Math.round(s/t.qs.length*100)}
+function counts(){let ok=0,mid=0;ALL.forEach(([t,i])=>{const v=scores[qid(t,i)];if(v===3)ok++;else if(v===2)mid++});return{ok,mid,tot:ALL.length}}
+const quickToggles=()=>`<div class="quick" role="group" aria-label="Cosa mostrare"><button class="qt ${P.fon?"on":""}" data-quick="fon" aria-pressed="${P.fon}">🗣️ Fonetica</button><button class="qt ${P.it?"on":""}" data-quick="it" aria-pressed="${P.it}">🇮🇹 Traduzione</button></div>`;
+const kchip=(k,attr)=>`<button class="kchip" ${attr}><b>${esc(k[0])}</b><span class="f fonline">${esc(k[1])}</span><span class="i itline">${esc(k[2])}</span></button>`;
+
+/* ====================== STUDIA ====================== */
+function vHome(){
+  head("English Easy",false);const c=counts(),pct=Math.round((c.ok+c.mid/2)/c.tot*100);
+  let h=`<section class="hero"><h2>Renewable Energy<br>in inglese facile</h2>
+   <p>Ascolta, leggi la pronuncia scritta in italiano, ripeti. Una frase alla volta.</p>
+   <div class="pbar" role="progressbar" aria-valuenow="${pct}" aria-valuemin="0" aria-valuemax="100" aria-label="Progresso totale"><i style="width:${pct}%"></i></div>
+   <p class="small" style="margin-top:6px">${c.ok} domande su ${c.tot} già sicure</p></section>
+  ${voiceBar()}
+  <div class="card"><p class="label">🧭 Come studiare ogni domanda</p><ol class="steps">
+   <li><span class="s">1</span><div><b>Ascolta</b> la risposta con ▶<br><span class="small muted">Leggi intanto la riga arancione 🗣️: è la pronuncia.</span></div></li>
+   <li><span class="s">2</span><div><b>Ascolta e ripeti</b><br><span class="small muted">L'app legge una frase e ti lascia il tempo di ripeterla.</span></div></li>
+   <li><span class="s">3</span><div><b>Prova da solo/a</b><br><span class="small muted">Copri l'inglese: guardi l'italiano e lo dici in inglese.</span></div></li></ol></div>
+  <p class="label" style="margin:22px 4px 0">I 5 argomenti</p>`;
+  TOPICS.forEach((t,ti)=>{h+=`<div class="card"><button class="topic" data-topic="${ti}"><span class="tile" style="background:${t.soft}">${t.icon}</span><span class="grow"><h3>${esc(t.title)}</h3><span class="muted small">${esc(t.it)} · ${t.qs.length} ${t.qs.length===1?"domanda":"domande"}</span><span class="bar" style="display:block"><i style="width:${tPct(ti)}%;background:${t.color}"></i></span></span><span aria-hidden="true" class="muted">›</span></button></div>`});
+  $v.innerHTML=h;
+}
+function vTopic(ti){
+  const t=TOPICS[ti];head(t.title,true);
+  let h=`<div class="qhead" style="background:${t.color}"><span class="chipT">${t.icon} ${esc(t.it)}</span><div class="en">${esc(t.title)}</div><p style="margin:8px 0 0;opacity:.95">${esc(t.sum)}</p></div>
+  <div class="card" style="padding:4px 14px">`;
+  t.qs.forEach((q,i)=>{h+=`<button class="qrow" data-q="${ti},${i}"><span class="n">${i+1}</span><span class="grow"><b>${esc(q.q[0])}</b><br><span class="small muted">${esc(q.q[2])}</span></span><span class="dot s${scores[qid(ti,i)]||0}" aria-label="${["non ancora provata","da ripassare","quasi","la so"][scores[qid(ti,i)]||0]}"></span></button>`});
+  h+=`</div><button class="btn" data-quiztopic="${ti}">🎤 Interrogami su ${esc(t.it.toLowerCase())}</button>
+  <p class="small muted center" style="margin-top:10px">🟢 la so · 🟡 quasi · 🟠 da ripassare</p>`;
+  $v.innerHTML=h;
+}
+let hideEn=false;
+function vQ(ti,i){
+  const t=TOPICS[ti],q=t.qs[i];head(`${t.icon} ${i+1} di ${t.qs.length}`,true);
+  let h=`<div class="qhead" style="background:${t.color}"><span class="chipT">${t.icon} ${esc(t.title)}</span>
+   <div class="row"><div class="grow"><div class="en">${esc(q.q[0])}</div><div class="fonline" style="color:#fff">${esc(q.q[1])}</div><div class="itline" style="color:#fff">${esc(q.q[2])}</div></div>${play(q.q[0],"white","Ascolta la domanda")}</div></div>
+  ${quickToggles()}
+  <div class="card"><p class="label">① Come iniziare</p><div class="start row"><div class="grow"><div class="en">${esc(q.st[0])}</div><div class="fonline">${esc(q.st[1])}</div><div class="itline">${esc(q.st[2])}</div></div>${play(q.st[0],"sm soft")}</div></div>
+  <div class="card ${hideEn?"hideEn":""}" id="ansCard"><p class="label">② La risposta · ${q.s.length} frasi</p>
+   <div class="ctrl"><button class="cbtn" data-mode="all" data-label="▶ Ascolta tutto">▶ Ascolta tutto</button><button class="cbtn alt" data-mode="repeat" data-label="🔁 Ascolta e ripeti">🔁 Ascolta e ripeti</button></div>
+   ${q.s.map((s,k)=>`<div class="sent" data-en="${esc(s[0])}"><span class="num">${k+1}</span><div class="grow"><div class="en">${words(s[0])}</div><div class="fonline">${esc(s[1])}</div><div class="itline">${esc(s[2])}</div><div class="turn" aria-live="polite"></div></div>${play(s[0],"sm soft")}</div>`).join("")}
+   <div class="tog" style="border-top:1px solid var(--line);margin-top:8px"><span><b>③ Prova da solo/a</b><br><span class="small muted">Copro l'inglese: tu leggi l'italiano e lo dici in inglese</span></span><button class="sw ${hideEn?"on":""}" id="swHide" aria-label="Copri l'inglese"></button></div>
+   <p class="small muted" style="margin:6px 0 0">💡 Tocca una parola inglese per sentirla da sola.</p></div>
+  <div class="card"><p class="label">🔑 Parole chiave · tocca per ascoltare</p><div class="chips">${q.k.map(k=>kchip(k,`data-say="${esc(k[0])}" aria-label="Ascolta ${esc(k[0])}"`)).join("")}</div></div>
+  <div class="pager"><button class="btn alt" data-q="${ti},${i-1}" ${i===0?"disabled style='opacity:.35'":""}>← Prima</button><button class="btn" ${i<t.qs.length-1?`data-q="${ti},${i+1}"`:`data-quiztopic="${ti}"`}>${i<t.qs.length-1?"Dopo →":"🎤 Interrogami"}</button></div>`;
+  $v.innerHTML=h;
+}
+
+/* ====================== INTERROGAMI ====================== */
+let qSel=store.get("ee_qsel","all"),qLen=store.get("ee_qlen",5),quiz=null;
+function vQuizHome(){
+  head("Interrogami",false);
+  $v.innerHTML=`<section class="hero" style="background:linear-gradient(135deg,#0f766e,#0ea5e9)"><h2>Simula l'interrogazione</h2><p>La prof legge la domanda. Tu rispondi ad alta voce. Gli aiutini ci sono: usali senza paura.</p></section>
+  <div class="card"><p class="label">Su quale argomento?</p><div class="pick">
+   <button data-sel="all" class="${qSel==="all"?"on":""}">🎲 Tutti</button>
+   ${TOPICS.map((t,ti)=>`<button data-sel="${ti}" class="${String(qSel)===String(ti)?"on":""}">${t.icon} ${esc(t.it)}</button>`).join("")}
+   <button data-sel="weak" class="${qSel==="weak"?"on":""}">🟠 Da ripassare</button></div>
+   <p class="label" style="margin-top:18px">Quante domande?</p><div class="pick">${[3,5,10].map(n=>`<button data-len="${n}" class="${qLen===n?"on":""}">${n}</button>`).join("")}</div></div>
+  <div class="card"><p class="label">Come funziona</p><ol class="steps">
+   <li><span class="s">1</span><div>Ascolta la domanda (tocca ▶ per risentirla).</div></li>
+   <li><span class="s">2</span><div>Rispondi a voce: comincia con la <b>frase d'avvio</b>.</div></li>
+   <li><span class="s">3</span><div>Controlla le parole chiave che hai detto e datti un voto.</div></li></ol></div>
+  <button class="btn" id="go">▶ Inizia</button>`;
+}
+function pool(){return ALL.filter(([t,i])=>{const v=scores[qid(t,i)];return qSel==="all"||String(qSel)===String(t)||(qSel==="weak"&&v&&v<3)})}
+function pickW(pl,n){const it=pl.map(x=>{const v=scores[qid(x[0],x[1])]||0;return{x,w:v===3?1:v===2?3:v===1?5:4}});const o=[];
+  while(o.length<n&&it.length){const T=it.reduce((a,b)=>a+b.w,0);let r=Math.random()*T,k=0;for(;k<it.length;k++){r-=it[k].w;if(r<=0)break}o.push(it.splice(Math.min(k,it.length-1),1)[0].x)}return o}
+function startQuiz(){const pl=pool();if(!pl.length){toast(qSel==="weak"?"Nessuna domanda da ripassare: ottimo! 🎉":"Nessuna domanda");return false}
+  quiz={list:pickW(pl,qLen),pos:0,st:0,got:new Set(),res:[],fromB:false,hints:0};return true}
+/* ---- Costruzione guidata della risposta: frase per frase, pezzo per pezzo ---- */
+function chunksOf(en){const w=en.split(/\s+/),out=[];let cur=[];
+  w.forEach(x=>{cur.push(x);if(/[,:;]$/.test(x)||cur.length>=(w.length<=5?2:3)){out.push(cur.join(" "));cur=[]}});
+  if(cur.length){if(cur.length===1&&out.length&&w.length>5)out[out.length-1]+=" "+cur[0];else out.push(cur.join(" "))}return out}
+function shuffle(a){const r=[...a];for(let i=r.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[r[i],r[j]]=[r[j],r[i]]}
+  if(r.length>1&&r.join("|")===a.join("|"))return shuffle(a);return r}
+function bInit(q){quiz.b=0;quiz.hints=0;bLoad(q)}
+function bLoad(q){const c=chunksOf(q.s[quiz.b][0]);quiz.parts=c;quiz.built=[];quiz.left=shuffle(c);quiz.okS=false}
+function sentHTML(s,k){return `<div class="sent" data-en="${esc(s[0])}"><span class="num">${k+1}</span><div class="grow"><div class="en">${words(s[0])}</div><div class="fonline">${esc(s[1])}</div><div class="itline">${esc(s[2])}</div><div class="turn"></div></div>${play(s[0],"sm soft")}</div>`}
+function builderHTML(q){
+  const n=q.s.length,b=quiz.b,s=q.s[b];
+  let h=`<div class="card reveal"><p class="label">① Comincia sempre così</p><div class="start row"><div class="grow"><div class="en">${esc(q.st[0])}</div><div class="fonline">${esc(q.st[1])}</div><div class="itline">${esc(q.st[2])}</div></div>${play(q.st[0],"sm soft")}</div></div>`;
+  if(b>0)h+=`<div class="card"><p class="label">✅ La tua risposta finora</p>${q.s.slice(0,b).map(sentHTML).join("")}</div>`;
+  if(b>=n){
+    h+=`<div class="card center reveal"><div class="bigE">🎉</div><h3 style="font-size:1.3em">Risposta completa!</h3><p class="muted small" style="margin:.3em 0 12px">Ora ascoltala tutta e poi ripetila ad alta voce, senza guardare.</p>
+     <div class="ctrl" style="grid-template-columns:1fr"><button class="cbtn" data-mode="all" data-label="▶ Ascolta tutta la risposta">▶ Ascolta tutta la risposta</button></div></div>
+     <button class="btn" data-st="3">Avanti: com'è andata? →</button>`;
+    return h;
+  }
+  h+=`<div class="card reveal" id="builder"><p class="label">② Frase ${b+1} di ${n} · costruiscila</p>
+   <div class="start" style="background:var(--pri-soft)"><span class="small muted">Devi dire in inglese:</span><div style="font-weight:700;font-size:1.08em">🇮🇹 ${esc(s[2])}</div></div>
+   <p class="small muted" style="margin:12px 0 6px">${quiz.okS?"Perfetto! 👏":"Tocca i pezzi <b>nell'ordine giusto</b>:"}</p>
+   <div style="min-height:56px;border:2px dashed ${quiz.okS?"var(--ok)":"var(--line)"};border-radius:16px;padding:10px 12px;font-weight:700;font-size:1.1em;line-height:1.5;background:${quiz.okS?"var(--ok-soft)":"transparent"}" aria-live="polite">${quiz.built.length?quiz.built.map(x=>`<span style="color:var(--ok)">${esc(x)}</span>`).join(" "):`<span class="muted small" style="font-weight:400">… la frase apparirà qui</span>`}</div>`;
+  if(!quiz.okS){
+    h+=`<div class="chips" style="margin-top:12px">${quiz.left.map((p,j)=>`<button class="kchip" data-part="${j}" style="min-height:52px;justify-content:center"><b style="font-size:1.05em">${esc(p)}</b></button>`).join("")}</div>
+    <div class="ctrl" style="margin-top:14px"><button class="cbtn alt" data-bhint="1">💡 Prossimo pezzo</button><button class="cbtn alt" data-bshow="1">👀 Mostra la frase</button></div>`;
+  }else{
+    h+=`<div style="margin-top:10px">${sentHTML(s,b).replace('class="sent"','class="sent" style="margin:0;padding:10px 0"')}</div>
+     <p class="small" style="margin:8px 0 12px"><b>Ora dilla tu</b> ad alta voce, leggendo la riga arancione 🗣️.</p>
+     <button class="btn" data-bnext="1">${b<n-1?"Frase successiva →":"Ho finito ✓"}</button>`;
+  }
+  h+=`</div>`;
+  return h;
+}
+function vQuizQ(autoplay){
+  const [ti,i]=quiz.list[quiz.pos],t=TOPICS[ti],q=t.qs[i],st=quiz.st;
+  head(`Domanda ${quiz.pos+1} di ${quiz.list.length}`,true);
+  let h=`<div class="bar" style="margin-top:4px" role="progressbar" aria-valuenow="${quiz.pos}" aria-valuemax="${quiz.list.length}"><i style="width:${quiz.pos/quiz.list.length*100}%;background:var(--pri)"></i></div>
+  <div class="qhead" style="background:${t.color}"><span class="chipT">${t.icon} ${esc(t.title)}</span><div class="row"><div class="grow"><div class="en">${esc(q.q[0])}</div><div class="fonline" style="color:#fff">${esc(q.q[1])}</div><div class="itline" style="color:#fff">${esc(q.q[2])}</div></div>${play(q.q[0],"white","Riascolta la domanda")}</div></div>`;
+  if(st===0)h+=`<div class="card center"><div class="bigE" aria-hidden="true">🗣️</div><p style="margin:4px 0 0"><b>Respira e prova a rispondere ad alta voce.</b><br><span class="muted small">Non sai da dove partire? Nessun problema: costruiamo la risposta insieme, un pezzo alla volta.</span></p></div>
+   <button class="btn" data-st="1">🧱 Costruiamo la risposta passo passo</button><button class="btn alt" data-st="3">✅ Ho già risposto: controlliamo</button>`;
+  if(st===1)h+=builderHTML(q);
+  if(st>=3){h+=`<div class="card reveal"><p class="label">${quiz.fromB?"Ripassa le parole chiave":"Quali parole chiave hai detto? Toccale ✓"}</p><div class="chips">${q.k.map((k,j)=>quiz.fromB?kchip(k,`data-say="${esc(k[0])}"`):kchip(k,`data-got="${j}" class="kchip ${quiz.got.has(j)?"got":""}" aria-pressed="${quiz.got.has(j)}"`).replace('class="kchip" ','')).join("")}</div></div>
+   ${quiz.fromB?"":`<div class="card reveal"><p class="label">La risposta</p><div class="ctrl" style="grid-template-columns:1fr"><button class="cbtn" data-mode="all" data-label="▶ Ascolta la risposta">▶ Ascolta la risposta</button></div>${q.s.map(sentHTML).join("")}</div>`}
+   ${quiz.fromB?`<div class="note" style="margin-top:0">Hai usato ${quiz.hints} aiut${quiz.hints===1?"o":"i"}. ${quiz.hints===0?"Grandioso! 🌟":"Riprova questa domanda più tardi: ne userai meno."}</div>`:""}
+   <p class="label center" style="justify-content:center;margin-top:20px">Com'è andata?</p>
+   <div class="rate"><button class="r1" data-rate="1"><span class="e">😟</span>Da ripassare</button><button class="r2" data-rate="2"><span class="e">🙂</span>Quasi</button><button class="r3" data-rate="3"><span class="e">😀</span>La so!</button></div>`}
+  $v.innerHTML=h;
+  if(autoplay){const b=$v.querySelector(".qhead .play");speak(q.q[0],b)}
+}
+function curQ(){const [ti,i]=quiz.list[quiz.pos];return TOPICS[ti].qs[i]}
+function bTap(j){const q=curQ(),want=quiz.parts[quiz.built.length],p=quiz.left[j];
+  if(p===want){quiz.built.push(p);quiz.left.splice(j,1);speak(p,null);
+    if(!quiz.left.length){quiz.okS=true;vQuizQ(false);speak(q.s[quiz.b][0],null);scrollBuilder();return}
+    vQuizQ(false);scrollBuilder()}
+  else{quiz.hints++;toast("Non ancora: quale pezzo viene dopo? 🤔");const el=$v.querySelector(`[data-part="${j}"]`);if(el){el.animate([{transform:"translateX(0)"},{transform:"translateX(-6px)"},{transform:"translateX(6px)"},{transform:"translateX(0)"}],{duration:280})}}}
+function bHint(){const want=quiz.parts[quiz.built.length];const j=quiz.left.indexOf(want);quiz.hints++;if(j>=0)bTap(j)}
+function bShow(){const q=curQ();quiz.hints+=2;quiz.built=[...quiz.parts];quiz.left=[];quiz.okS=true;vQuizQ(false);speak(q.s[quiz.b][0],null);scrollBuilder()}
+function bNext(){const q=curQ();quiz.b++;if(quiz.b<q.s.length)bLoad(q);stopAll();vQuizQ(false);scrollBuilder()}
+function scrollBuilder(){const el=document.getElementById("builder")||$v.querySelector(".bigE");if(el)el.scrollIntoView({behavior:"smooth",block:"start"})}
+const CHEER=["Sbagliare qui è gratis: serve proprio a questo 💛","Ogni volta che ripeti, diventa più facile.","Nessun problema: ora sai cosa ripassare."];
+function rate(v){const [ti,i]=quiz.list[quiz.pos];scores[qid(ti,i)]=v;store.set("ee_scores2",scores);
+  quiz.res.push({ti,i,v,kw:quiz.got.size,tot:TOPICS[ti].qs[i].k.length,b:quiz.fromB,h:quiz.hints});
+  if(v===1)toast(CHEER[Math.floor(Math.random()*CHEER.length)]);
+  quiz.pos++;quiz.st=0;quiz.got=new Set();quiz.fromB=false;quiz.hints=0;stopAll();
+  if(quiz.pos>=quiz.list.length){stack=[];vQuizEnd()}else vQuizQ(true);scrollTo(0,0)}
+function vQuizEnd(){
+  head("Risultato",false);const n=quiz.res.length,ok=quiz.res.filter(r=>r.v===3).length,mid=quiz.res.filter(r=>r.v===2).length;
+  const m=ok/n>=.8?["🏆","Sei pronto/a! Ottimo lavoro."]:(ok+mid)/n>=.5?["💪","Ci sei quasi. Ripassa quelle in arancione."]:["🌱","È l'inizio: ogni giro ne aggiunge una. Riprova!"];
+  $v.innerHTML=`<div class="card center" style="margin-top:14px"><div class="bigE">${m[0]}</div><h2 style="font-size:1.6em;margin-top:6px">${ok} su ${n} sicure</h2><p class="muted" style="margin:.4em 0 0">${m[1]}</p></div>
+  <div class="card" style="padding:4px 14px">${quiz.res.map(r=>{const q=TOPICS[r.ti].qs[r.i];return `<button class="qrow" data-q="${r.ti},${r.i}"><span class="dot s${r.v}"></span><span class="grow">${esc(q.q[0])}<br><span class="small muted">${r.b?"Costruita passo passo · aiuti: "+r.h:"Parole chiave: "+r.kw+"/"+r.tot} · tocca per ripassare</span></span></button>`}).join("")}</div>
+  <button class="btn" id="go">🔁 Altro giro</button><button class="btn alt" data-tabgo="home">📚 Torna a studiare</button>`;quiz=null;
+}
+
+/* ====================== PAROLE ====================== */
+let wFilter="all",wSearch="";
+function vWords(){
+  head("Le parole",false);
+  $v.innerHTML=`<p class="muted" style="margin:10px 4px 6px">Tutte le parole chiave, con la pronuncia scritta all'italiana. Tocca ▶ per ascoltare.</p>
+  <input class="search" id="wSearch" type="search" placeholder="🔎 Cerca in inglese o in italiano" value="${esc(wSearch)}" aria-label="Cerca una parola">
+  <div class="pick" style="margin-top:12px"><button data-wf="all" class="${wFilter==="all"?"on":""}">Tutte</button>${TOPICS.map((t,ti)=>`<button data-wf="${ti}" class="${String(wFilter)===String(ti)?"on":""}">${t.icon} ${esc(t.it)}</button>`).join("")}</div>
+  ${quickToggles()}
+  <div class="card" style="padding:4px 16px" id="wList"></div>`;
+  fillWords();
+  document.getElementById("wSearch").addEventListener("input",e=>{wSearch=e.target.value;fillWords()});
+}
+function fillWords(){
+  const s=wSearch.trim().toLowerCase();
+  const list=GLOSS.filter(g=>(wFilter==="all"||String(g.ti)===String(wFilter))&&(!s||g.k[0].toLowerCase().includes(s)||g.k[2].toLowerCase().includes(s)));
+  document.getElementById("wList").innerHTML=list.length?list.map(g=>`<div class="wordrow">${play(g.k[0],"sm soft")}<div class="grow"><b>${esc(g.k[0])}</b><div class="fonline small">${esc(g.k[1])}</div><div class="itline">${esc(g.k[2])}</div></div><span aria-hidden="true">${TOPICS[g.ti].icon}</span></div>`).join(""):`<p class="muted center">Nessuna parola trovata</p>`;
+}
+
+/* ====================== AIUTO ====================== */
+function vHelp(){
+  head("Aiuto",false);
+  $v.innerHTML=`<section class="hero" style="background:linear-gradient(135deg,#c2410c,#db2777)"><h2>Come si legge la fonetica 🗣️</h2><p>La riga arancione è l'inglese scritto come si pronuncia, con le lettere italiane. Leggila come se fosse italiano, con queste regole.</p></section>
+  <div class="card">${FON_RULES.map(r=>`<div class="rule"><span class="k">${esc(r[0])}</span><span>${esc(r[1])}</span></div>`).join("")}</div>
+  <div class="card"><p class="label">💬 Frasi salvavita · per qualsiasi domanda</p>${quickToggles()}
+  ${PHRASES.map(g=>`<p style="font-weight:700;margin:16px 0 4px">${esc(g.t)}</p>${g.items.map(p=>`<div class="wordrow">${play(p[0],"sm soft")}<div class="grow"><b>${esc(p[0])}</b><div class="fonline small">${esc(p[1])}</div><div class="itline">${esc(p[2])}</div></div></div>`).join("")}`).join("")}</div>
+  <div class="card"><p class="label">🧘 Prima dell'interrogazione</p>
+   <div class="rule"><span class="k">1</span><span><b>Respira:</b> inspira 4 secondi, espira 4 secondi. Ripeti 3 volte.</span></div>
+   <div class="rule"><span class="k">2</span><span><b>Frasi corte.</b> Soggetto + verbo + cosa. Es. «The wind turns the blades.»</span></div>
+   <div class="rule"><span class="k">3</span><span><b>Parla piano.</b> Lentamente si sbaglia meno e si capisce di più.</span></div>
+   <div class="rule"><span class="k">4</span><span><b>Ti blocchi?</b> Usa «Let me think for a second» e riparti dalla frase d'avvio.</span></div></div>
+  <div class="card"><p class="label">🔊 La voce</p>
+   <p style="margin-top:0">La voce che senti è quella <b>installata sul tuo telefono</b>: l'app non può crearne una nuova. Cerca una voce <b>femminile britannica</b>. Se il telefono non ce l'ha, ne usa un'altra, e in ⚙️ Impostazioni ti dice sempre quale.</p>
+   <p><b>Per avere una voce femminile britannica:</b></p>
+   <div class="rule"><span class="k">iPhone</span><span>Impostazioni › Accessibilità › Contenuto letto ad alta voce › Voci › Inglese › <b>Regno Unito</b>. Scegli e scarica <b>Kate</b>, <b>Serena</b>, <b>Stephanie</b> o <b>Martha</b>. Poi chiudi e riapri l'app: se il telefono non mostra l'elenco delle voci, l'app usa proprio quella scelta qui.</span></div>
+   <div class="rule"><span class="k">Android</span><span>Impostazioni › Sintesi vocale (o Accessibilità › Output sintesi vocale) › Motore Google › ⚙️ › Installa dati vocali › <b>Inglese (Regno Unito)</b>. Ascolta le voci e scegline una femminile, poi riapri l'app.</span></div>
+   <div class="rule"><span class="k">Se non va</span><span>Apri il link dell'app in <b>Safari</b> o <b>Chrome</b>: dentro alcune app la scelta delle voci è bloccata.</span></div></div>`;
+}
+
+/* ====================== NAVIGAZIONE ====================== */
+let tab="home",stack=[];
+function render(){const t=stack[stack.length-1];
+  if(t){if(t.v==="topic")vTopic(t.ti);else if(t.v==="q")vQ(t.ti,t.i);else if(t.v==="quiz")vQuizQ(false)}
+  else({home:vHome,quiz:vQuizHome,words:vWords,help:vHelp})[tab]()}
+function go(v){stopAll();stack.push(v);render();scrollTo(0,0)}
+function setNav(t){document.querySelectorAll("nav button").forEach(b=>{const on=b.dataset.tab===t;b.classList.toggle("on",on);b.setAttribute("aria-current",on?"page":"false")})}
+function goTab(t){stopAll();tab=t;stack=[];quiz=null;setNav(t);render();scrollTo(0,0)}
+function launchQuiz(){stopAll();tab="quiz";setNav("quiz");stack=[];if(startQuiz()){stack=[{v:"quiz"}];vQuizQ(true)}else render();scrollTo(0,0)}
+document.getElementById("back").onclick=()=>{stopAll();const t=stack.pop();if(t&&t.v==="quiz")quiz=null;render();scrollTo(0,0)};
+document.querySelectorAll("nav button").forEach(b=>b.onclick=()=>goTab(b.dataset.tab));
+
+$v.addEventListener("click",e=>{
+  if(e.target.closest("[data-opensettings]")){document.getElementById("setBtn").click();return}
+  const w=e.target.closest(".w");if(w&&w.dataset.word&&!e.target.closest("button")){speak(w.dataset.word,null,P.rate*0.9);return}
+  const b=e.target.closest("button");if(!b||b.disabled)return;const d=b.dataset;
+  if(d.say!==undefined){speak(d.say,b.classList.contains("play")?b:null);return}
+  if(d.mode){runSentences(d.mode,b);return}
+  if(d.quick){P[d.quick]=!P[d.quick];savePrefs();applyPrefs();document.querySelectorAll(`[data-quick="${d.quick}"]`).forEach(x=>{x.classList.toggle("on",P[d.quick]);x.setAttribute("aria-pressed",P[d.quick])});return}
+  if(d.topic!==undefined){go({v:"topic",ti:+d.topic});return}
+  if(d.q){const [ti,i]=d.q.split(",").map(Number);const t=stack[stack.length-1];stopAll();if(t&&t.v==="q"){t.ti=ti;t.i=i;render();scrollTo(0,0)}else go({v:"q",ti,i});return}
+  if(d.quiztopic!==undefined){qSel=+d.quiztopic;store.set("ee_qsel",qSel);launchQuiz();return}
+  if(d.sel!==undefined){qSel=(d.sel==="all"||d.sel==="weak")?d.sel:+d.sel;store.set("ee_qsel",qSel);vQuizHome();return}
+  if(d.len){qLen=+d.len;store.set("ee_qlen",qLen);vQuizHome();return}
+  if(b.id==="go"){launchQuiz();return}
+  if(d.st){const n=+d.st;stopAll();if(n===1){quiz.fromB=true;bInit(curQ())}if(n===3&&quiz.st!==1)quiz.fromB=false;quiz.st=n;vQuizQ(false);scrollTo(0,0);return}
+  if(d.part!==undefined&&quiz){bTap(+d.part);return}
+  if(d.bhint){bHint();return}
+  if(d.bshow){bShow();return}
+  if(d.bnext){bNext();return}
+  if(d.got!==undefined){const j=+d.got;quiz.got.has(j)?quiz.got.delete(j):quiz.got.add(j);b.classList.toggle("got",quiz.got.has(j));b.setAttribute("aria-pressed",quiz.got.has(j));return}
+  if(d.rate){rate(+d.rate);return}
+  if(d.tabgo){goTab(d.tabgo);return}
+  if(d.wf!==undefined){wFilter=d.wf==="all"?"all":+d.wf;vWords();return}
+  if(b.id==="swHide"){hideEn=!hideEn;b.classList.toggle("on",hideEn);document.getElementById("ansCard").classList.toggle("hideEn",hideEn);toast(hideEn?"Leggi l'italiano e dillo in inglese 💪":"Inglese visibile");return}
+});
+
+/* ====================== IMPOSTAZIONI ====================== */
+const sheet=document.getElementById("sheet");
+function applyPrefs(){
+  document.body.classList.remove("fs1","fs2");if(P.fs)document.body.classList.add("fs"+P.fs);
+  document.body.classList.toggle("lex",P.lex);document.body.classList.toggle("nofon",!P.fon);document.body.classList.toggle("noit",!P.it);
+  [["swFon","fon"],["swIt","it"],["swLex","lex"]].forEach(([i,k])=>document.getElementById(i).classList.toggle("on",!!P[k]));
+  document.querySelectorAll("#segFs button").forEach(b=>b.classList.toggle("on",+b.dataset.fs===P.fs));
+  document.querySelectorAll("#segRate button").forEach(b=>b.classList.toggle("on",+b.dataset.rate===P.rate));
+  document.getElementById("pitch").value=P.pitch;
+}
+document.getElementById("pitch").oninput=e=>{P.pitch=+e.target.value;savePrefs()};
+document.getElementById("pitch").onchange=()=>speak("Hello! Wind power is a renewable energy source.");
+document.querySelectorAll("#segRate button").forEach(b=>b.onclick=()=>{P.rate=+b.dataset.rate;savePrefs();applyPrefs();speak("This is my speed.")});
+document.querySelectorAll("#segFs button").forEach(b=>b.onclick=()=>{P.fs=+b.dataset.fs;savePrefs();applyPrefs()});
+[["swFon","fon"],["swIt","it"],["swLex","lex"]].forEach(([i,k])=>document.getElementById(i).onclick=()=>{stopAll();P[k]=!P[k];savePrefs();applyPrefs();render()});
+document.getElementById("setBtn").onclick=()=>{loadVoices();sheet.classList.add("show");document.getElementById("closeSet").focus()};
+document.getElementById("closeSet").onclick=()=>sheet.classList.remove("show");
+sheet.onclick=e=>{if(e.target===sheet){sheet.classList.remove("show");return}
+  const b=e.target.closest("button");if(!b)return;
+  if(b.dataset.vtest!==undefined){const v=voices.find(x=>x.name===b.dataset.vtest);if(!v)return;stopAll();
+    try{const u=new SpeechSynthesisUtterance("Hello! Wind power is a renewable energy source.");try{u.voice=v}catch(_){}u.lang=v.lang;u.rate=P.rate;u.pitch=P.pitch;b.classList.add("speaking");spBtn=b;u.onend=u.onerror=()=>b.classList.remove("speaking");say(u)}catch(_){toast("Questa voce non funziona")}return}
+  if(b.dataset.use!==undefined){P.voice=b.dataset.use;savePrefs();voice=null;loadVoices();speak("Hello! I will read for you.");return}
+};
+let arm=false;
+document.getElementById("resetBtn").onclick=e=>{const b=e.currentTarget;if(!arm){arm=true;b.textContent="Tocca ancora per confermare";setTimeout(()=>{arm=false;b.textContent="↺ Azzera i miei progressi"},3000);return}
+  scores={};store.set("ee_scores2",scores);arm=false;b.textContent="↺ Azzera i miei progressi";sheet.classList.remove("show");toast("Progressi azzerati");stack=[];render()};
+document.addEventListener("keydown",e=>{if(e.key==="Escape"){sheet.classList.remove("show");onb.classList.remove("show")}});
+
+/* ====================== GUIDA INIZIALE ====================== */
+const onb=document.getElementById("onb");
+const SLIDES=[
+ ["👋","Ciao! Qui l'inglese è facile","Non devi sapere niente. Imparerai 5 argomenti sull'energia rinnovabile, una frase alla volta."],
+ ["🗣️","Leggi la riga arancione","Sotto ogni frase inglese c'è la pronuncia scritta all'italiana. Es. <b>water</b> → <span style='color:var(--fon);font-weight:700'>uòota</span>. La vocale con l'accento è quella forte."],
+ ["🔁","Ascolta e ripeti","Una voce legge la frase, poi tocca a te. Ripeti ad alta voce, anche piano. Poi prova a farti interrogare!"]
+];
+let sl=0;
+function showOnb(){sl=0;drawOnb();onb.classList.add("show")}
+function drawOnb(){const s=SLIDES[sl];document.getElementById("onbIn").innerHTML=`<div class="ob"><div class="bigE">${s[0]}</div><h2>${s[1]}</h2><p class="muted">${s[2]}</p>
+ <div class="dots">${SLIDES.map((_,k)=>`<i class="${k===sl?"on":""}"></i>`).join("")}</div>
+ <button class="btn" id="obNext">${sl<SLIDES.length-1?"Avanti →":"Iniziamo! 🚀"}</button>${sl===1?`<button class="btn alt" id="obHear">▶ Senti «water»</button>`:""}${sl<SLIDES.length-1?`<button class="btn alt" id="obSkip">Salta</button>`:""}</div>`;
+ document.getElementById("obNext").onclick=()=>{if(sl<SLIDES.length-1){sl++;drawOnb()}else closeOnb()};
+ const sk=document.getElementById("obSkip");if(sk)sk.onclick=closeOnb;
+ const hr=document.getElementById("obHear");if(hr)hr.onclick=()=>speak("water");}
+function closeOnb(){onb.classList.remove("show");store.set("ee_seen",true)}
+document.getElementById("introAgain").onclick=()=>{sheet.classList.remove("show");showOnb()};
+
+applyPrefs();render();
+if(!store.get("ee_seen",false))showOnb();
+</script>
+</body>
+</html>
